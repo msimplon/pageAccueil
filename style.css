@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #cdbba6;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HERO SECTION */
+
+#hero {
+    background-image: url("https://images.unsplash.com/photo-1542293011-a7c656888275?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* After selector'ün önünde gözükmesi için */
+    z-index: 1;
+}
+
+#hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.1;
+    z-index: -1;
+    /* After selectoru arka plana atar */
+}
+
+#hero .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    justify-content: flex-start;
+}
+
+#hero h1 {
+    display: block;
+    width: fit-content;
+    font-size: 4rem;
+    position: relative;
+    color: transparent;
+    animation: text_reveal 0.5s ease forwards;
+    animation-delay: 1.5s;
+}
+
+#hero h1:nth-child(1) {
+    animation-delay: 1s;
+}
+
+#hero h1:nth-child(2) {
+    animation-delay: 2s;
+}
+
+#hero h1:nth-child(3) {
+    animation: text_reveal_name 0.5s ease forwards;
+    animation-delay: 3s;
+}
+
+#hero h1 span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: crimson;
+    animation: text_reveal_box 1s ease;
+    animation-delay: 0.5s;
+}
+
+#hero h1:nth-child(1) span {
+    animation-delay: 0.5s;
+}
+
+#hero h1:nth-child(2) span {
+    animation-delay: 1.5s;
+}
+
+#hero h1:nth-child(3) span {
+    animation-delay: 2.5s;
+}
+
+.cta {
+    display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 4px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 30px;
+    /* Buton'un üstüne gelindiğindeki animasyon*/
+    transition: 0.4s ease;
+    transition-property: background-color, color;
+    font-weight: bold;
+}
+
+.cta:hover {
+    color: white;
+    background-color: crimson;
+}
+
+@keyframes text_reveal_box {
+    50% {
+        width: 100%;
+        left: 0;
+    }
+
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes text_reveal {
+    100% {
+        color: white;
+    }
+}
+
+@keyframes text_reveal_name {
+    100% {
+        color: crimson;
+        font-weight: bolder;
+    }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+
+/* 
+hr{
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+} 
+ */
+
+
+/* Services Section */
+#services {
+    font-family: "Montserrat", sans-serif;
+}
+
+.content-title {
+    font-weight: 300;
+    font-size: 5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+#services .services {
+    flex-direction: column;
+    text-align: center;
+    max-width: 1500px;
+    margin: 100px auto;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .card__caption {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.card:hover .card__image {
+    transform: translateY(-10px);
+}
+
+.card:hover .card__thumb::after {
+    top: 0;
+}
+
+.card:hover .card__snippet {
+    margin: 20px 0;
+}
+
+.card__thumb {
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .card__thumb {
+        max-height: 500px;
+    }
+}
+
+.card__thumb::after {
+    position: absolute;
+    top: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.5) 40%,
+            rgba(255, 255, 255, 0) 100%);
+    transition: 0.3s;
+}
+
+@media (min-width: 1024px) {
+    .card__thumb::after {
+        top: calc(100% - 140px);
+    }
+}
+
+.card__image {
+    transition: 0.5s ease-in-out;
+}
+
+.card__caption {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    padding: 0 20px;
+    color: white;
+    transform: translateY(-50%);
+    text-align: center;
+    transition: 0.3s;
+}
+
+@media (min-width: 1024px) {
+    .card__caption {
+        top: calc(100% - 110px);
+        transform: unset;
+    }
+}
+
+.card__title {
+    display: -webkit-box;
+    max-height: 85px;
+    overflow: hidden;
+    font-size: 23px;
+    line-height: 28px;
+    text-shadow: 0px 1px 5px black;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.card__snippet {
+    display: -webkit-box;
+    max-height: 150px;
+    margin: 20px 0;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    transition: 0.5s ease-in-out;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+@media (min-width: 1024px) {
+    .card__snippet {
+        margin: 60px 0;
+    }
+}
+
+.card__button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid white;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card__button:hover {
+    color: black;
+    background-color: white;
+}
+
+.disclaimer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 10px;
+    background-color: white;
+    transform: translateX(-50%);
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.disclaimer__link {
+    color: #755d87;
+    text-decoration: none;
+}
+
